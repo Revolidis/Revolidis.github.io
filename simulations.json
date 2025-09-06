@@ -1,0 +1,6 @@
+
+[
+  { "folder": "sim1", "name": "Simple Harmonic Motion", "thumb": "sim1/thumb.png" },
+  { "folder": "sim2", "name": "Damped Oscillator", "thumb": "sim2/thumb.png" },
+  { "folder": "sim3", "name": "Double Pendulum", "thumb": "sim3/thumb.png" }
+]

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Βολή Βλήματος</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+          <img src="logo2.png" alt="Logo" class="app-logo" />
+    <span class="creator">Επιμέλεια: Παναγιώτης Ρεβολίδης</span>
+
+
+  </header>
+
+  <h1>Βολή βλήματος</h1>
+
+  <!-- Top row: sliders + start/pause -->
+  <div class="controls-row">
+    <fieldset>
+      <legend>Αρχική Ταχύτητα v₀ (m/s)</legend>
+      <input type="range" id="v0Slider" min="1" max="100" step="0.5" value="30">
+      <input type="number" id="v0Input" min="1" max="100" step="0.5" value="30">
+    </fieldset>
+
+    <fieldset>
+      <legend>Γωνία βολής θ (deg)</legend>
+      <input type="range" id="angleSlider" min="0" max="90" step="0.5" value="0">
+      <input type="number" id="angleInput" min="0" max="90" step="0.5" value="0">
+    </fieldset>
+
+    <fieldset>
+      <legend>Βαρύτητα g (m/s²)</legend>
+      <input type="range" id="gSlider" min="0.1" max="30" step="0.1" value="9.81">
+      <input type="number" id="gInput" min="0.1" max="30" step="0.1" value="9.81">
+    </fieldset>
+
+    <fieldset>
+      <legend>Αρχικό ύψος y₀ (m)</legend>
+      <input type="range" id="y0Slider" min="0" max="100" step="0.1" value="10">
+      <input type="number" id="y0Input" min="0" max="100" step="0.1" value="10">
+    </fieldset>
+
+    <div class="simulation-controls">
+      <button id="startPauseBtn">Έναρξη</button>
+    </div>
+  </div>
+
+  <!-- Middle row: simulation left, charts right -->
+      <div class="second-row">
+  <div class="main-row">
+    <div class="simulation-container">
+      <div class="sim-frame">
+        <canvas id="projCanvas" width="600" height="360"></canvas>
+      </div>
+
+      <!-- realtime values (stacked) -->
+      <div class="realtime-values-left">
+        <div class="value-box"><span class="label">x =</span> <span id="xValue">0.00</span> <span class="unit">m</span></div>
+        <div class="value-box"><span class="label">y =</span> <span id="yValue">0.00</span> <span class="unit">m</span></div>
+        <div class="value-box"><span class="label">vx =</span> <span id="vxValue">0.00</span> <span class="unit">m/s</span></div>
+        <div class="value-box"><span class="label">vy =</span> <span id="vyValue">0.00</span> <span class="unit">m/s</span></div>
+        <div class="value-box"><span class="label">t =</span> <span id="tValue">0.00</span> <span class="unit">s</span></div>
+      </div>
+    </div>
+    </div>
+
+
+  <div class="main-row">
+        <div class="charts-section">
+      <div class="chart-controls">
+        <button id="toggleXT">x = f(t)</button>
+        <button id="toggleYT">y = f(t)</button>
+        
+      </div>
+
+      <div id="positionChartContainer" class="chart-container" aria-hidden="true">
+        <canvas id="xChart"></canvas>
+      </div>
+
+      <div id="heightChartContainer" class="chart-container" aria-hidden="true">
+        <canvas id="yChart"></canvas>
+      </div>
+
+      <div id="trajectoryChartContainer" class="chart-container" aria-hidden="true">
+        <canvas id="yxChart"></canvas>
+      </div>
+    </div>
+</div>
+          </div>
+  <script src="script.js"></script>
+</body>
+</html>
