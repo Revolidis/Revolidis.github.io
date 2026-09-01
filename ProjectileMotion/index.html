@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="main-container">
+  <div class="banner">
+    <b>Επιμέλεια: Ρεβολίδης Παναγιώτης</b></div>
+<div class="main-panel">
+
+  <div class="control-panel">
+    <b id="title">Οριζόντια Βολή.</b>
+    <div class="slidecontainer">
+    <p id="ampText">Ύψος: 5m</p>
+  <input type="range" min="0" max="40" value="5" class="slider" step="0.1" id="amp">
+    <p id="fText">Αρχική ταχύτητα: 1m/s</p>
+    <input type="range" min="0" max="5" value="1" class="slider" step="0.01" id="f">
+  
+</div>    
+
+<button id="restart">Εκκίνηση</button>
+</div>
+
+    <div id="sketch-container">
+     <canvas id="myChart"></canvas>
+     <canvas id="uChart"></canvas>
+<div id="tool-window" class="closed">
+ 
+  <div id="tool-header">
+    🔧
+  </div>
+
+  <div id="tool-body">
+        <label><input id="rotCheck" type="checkbox"checked="true">Τροχιά.</label>
+     <label><input id="xCheck" type="checkbox">Συνιστώσες θέσης.</label>
+         <label><input id="dCheck" type="checkbox">Μετατόπιση.</label>
+         <label><input id="uCheck" type="checkbox">Συνιστώσες ταχύτητας.</label>
+      <label><input id="uCheck1" type="checkbox">Ταχύτητα.</label>
+  
+    <label ><input id="sinCheck" type="checkbox">Διάγραμμα y-t.</label>
+
+  </div>
+
+</div>
+
+</div>
+    </div>
+</div>
+
+</div>
+
+<script src="Preamble.js"></script>
+<script src="graphics.js"></script>
+<script src="axis.js"></script>
+<script src="physicsMath.js"></script>
+<script src="sketch.js"></script>
+</body>
+
+</html>
