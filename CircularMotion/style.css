@@ -63,23 +63,9 @@ body {
     align-items: center;
 
     margin-top: 10px;
-    flex-shrink: 0;
-    min-width: 260px; 
+
     width: 100%;
 
-}
-.control-panel a {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    gap: 2px;
-    text-decoration: none;
-    color: inherit;
-}
-
-.control-panel a img {
-    flex-shrink: 0;
 }
 #panelHeader {
   background: rgba(50,50,50,0.95);
