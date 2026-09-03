@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="main-container">
+  <div class="banner">
+    <b>Επιμέλεια: Ρεβολίδης Παναγιώτης</b></div>
+<div class="main-panel">
+
+  <div class="control-panel">
+    <b id="title">Οριζόντια Βολή.</b>
+    <div class="slidecontainer">
+    <p id="ampText">Επιβατική ακτίνα: 5 m</p>
+  <input type="range" min="0" max="20" value="5" class="slider" step="0.1" id="amp">
+    <p id="fText">Συχνότητα: 0.5 hz</p>
+    <input type="range" min="-1" max="1" value="0.5" class="slider" step="0.01" id="f">
+  
+</div>    
+
+<button id="restart">Εκκίνηση</button>
+</div>
+
+    <div id="sketch-container">
+     <canvas id="myChart"></canvas>
+     <canvas id="uChart"></canvas>
+<div id="tool-window" class="closed">
+ 
+  <div id="tool-header">
+    🔧
+  </div>
+
+  <div id="tool-body">
+        <label><input id="rotCheck" type="checkbox"checked="true">Τροχιά.</label>
+     <label><input id="xCheck" type="checkbox">Επανάληψη.</label>
+         <label><input id="dCheck" type="checkbox"checked="true">Επιβατική Ακτίνα.</label>
+      <label><input id="uCheck1" type="checkbox">Γραμμική ταχύτητα.</label>
+           <label><input id="uCheck" type="checkbox">Γωνιακή ταχύτητα.</label>
+            <label><input id="aCheck" type="checkbox">Κεντρομόλος επιτάχυνση.</label>
+    <label ><input id="sinCheck" type="checkbox">Πρόσοψη.</label>
+
+  </div>
+
+</div>
+
+</div>
+    </div>
+</div>
+
+</div>
+
+<script src="Preamble.js"></script>
+<script src="graphics.js"></script>
+<script src="axis.js"></script>
+<script src="physicsMath.js"></script>
+<script src="sketch.js"></script>
+</body>
+
+</html>
