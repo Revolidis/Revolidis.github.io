@@ -27,10 +27,7 @@ body {
 
     text-align: center;
 }
-#sketch-container {
-  position: relative;
-  display: block;
-}
+
 
 #myChart {
     
@@ -57,15 +54,18 @@ body {
 
 .control-panel {
     background-color: #F3722C;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     margin-top: 10px;
+    flex-shrink: 0;
+    width: 300px;        /* was: width: 100%; */
+}
 
-    width: 100%;
-
+#sketch-container {
+  position: relative;
+  display: block;
+  flex: 1;              /* new — lets it fill the remaining row space */
 }
 #panelHeader {
   background: rgba(50,50,50,0.95);
