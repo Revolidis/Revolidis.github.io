@@ -21,6 +21,9 @@ let arel;
 let p1;
 let offsetX =0;
 let offsetY =0;
+let dragging = false;
+let lastX = 0;
+let lastY = 0;
 document.getElementById("rotCheck").addEventListener("change", function() {
     rotcheck = this.checked;
     if (rotcheck==0){
