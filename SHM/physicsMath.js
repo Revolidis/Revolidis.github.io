@@ -1,221 +1,111 @@
-var x = 0;
-var t = 0;
-let y = 0;
-let f0=0;
-let limit=0;
-let amp=50;
-let w=2*Math.PI;
-let T = 2 * Math.PI / w;
-let simSpeed = 1;   // user-controlled speed
-let dt = 0; 
-let x1=0.1;
-let running =0;
-let substeps=0;
-let x2=amp+1;
-let scale = 1; // pixels per unit
-let tickStep=50;
-let yprev=0.0;
-let rotcheck = false;
-let sinCheck = false;
-let arel;
-let p1;
-document.getElementById("rotCheck").addEventListener("change", function() {
-    rotcheck = this.checked;
-    if (rotcheck==0){
-   document.getElementById("text-input").style.display = "none";
-   document.getElementById("fieldLabel").style.display = "none";
-    x2=amp+1;}
-else{document.getElementById("text-input").style.display = "flex";
-  document.getElementById("fieldLabel").style.display = "flex";
-  x2=10*x2input.value;
-}
-});
-document.getElementById("sinCheck").addEventListener("change", function() {
-    sinCheck = this.checked;
-    
-});
-window.addEventListener(
-  "wheel",
-  (e) => {
-    e.preventDefault();
+function math_Handler(){
 
-    if (e.deltaY > 0) {
-      scale *= 0.9;   // zoom out
-    } else {
-      scale *= 1.1;   // zoom in
+substeps =1000;
+
+ for (i = 0; i < substeps; i++) {
+
+    t += (deltaTime / 1000 * dt) / substeps;
+
+    let theta = w * t;
+
+    let x = amp * Math.sin(theta + f0 + Math.PI/2);
+    let y = amp * Math.cos(theta + f0 + Math.PI/2);
+    
+    if (
+        (Math.abs(x2 + y) <= 0.005) &&
+        (Math.abs(x2 + yprev) <= 0.005)
+    ) {
+        running = false;
+        dt = 0;
+        simSpeed = 0;
+        rtext.innerText='Εκκίνηση';
+        break;
+        
     }
-     scale = Math.max(0.5, Math.min(200, scale));
-    
-  },
-  { passive: false }
-);
 
-// ---- Drag / pan support (desktop mouse + mobile touch) ----
-const sketchContainer = document.getElementById("sketch-container");
-let dragging = false;
-let lastX = 0;
-let lastY = 0;
-
-sketchContainer.addEventListener("mousedown", (e) => {
-  if (e.button !== 0) return;
-  dragging = true;
-  lastX = e.clientX;
-  lastY = e.clientY;
-});
-
-window.addEventListener("mouseup", () => {
-  dragging = false;
-});
-
-window.addEventListener("mousemove", (e) => {
-  if (!dragging) return;
-  let dx = e.clientX - lastX;
-  let dy = e.clientY - lastY;
-  offsetX += dx;
-  offsetY += dy;
-  lastX = e.clientX;
-  lastY = e.clientY;
-});
-
-// ---- Touch support (mobile): one-finger pan, two-finger pinch-to-zoom ----
-let lastTouchDist = null;
-
-function getTouchDist(touches) {
-  let dx = touches[0].clientX - touches[1].clientX;
-  let dy = touches[0].clientY - touches[1].clientY;
-  return Math.sqrt(dx * dx + dy * dy);
+    yprev = y;
 }
 
-sketchContainer.addEventListener("touchstart", (e) => {
-  if (e.touches.length === 1) {
-    dragging = true;
-    lastX = e.touches[0].clientX;
-    lastY = e.touches[0].clientY;
-  } else if (e.touches.length === 2) {
-    dragging = false;
-    lastTouchDist = getTouchDist(e.touches);
-  }
-}, { passive: false });
+ let p = toScreen(
+    amp * Math.sin(w * t + f0 + Math.PI/2),
+    amp * Math.cos(w * t + f0 + Math.PI/2)
+ );
 
-sketchContainer.addEventListener("touchmove", (e) => {
-  e.preventDefault(); // stop the page/browser from scrolling or pinch-zooming on its own
+ return p;
+}
+function Rotating_Vector(p){
+push()
+fill( '#0072B8');
+arc(width/2, height/2, amp-20, amp-20, -(w*t+f0),-(Math.asin(x1/amp)));
+pop()
+circle(p.x, p.y, 20);
+ let origin = toScreen(0, 0);
+  line(width/2, height/2, p.x,p.y);
+  let xt = amp*Math.sin(f0+Math.PI/2);
+let yt = amp*Math.cos(f0+Math.PI/2);
 
-  if (e.touches.length === 1 && dragging) {
-    let dx = e.touches[0].clientX - lastX;
-    let dy = e.touches[0].clientY - lastY;
-    offsetX += dx;
-    offsetY += dy;
-    lastX = e.touches[0].clientX;
-    lastY = e.touches[0].clientY;
-  } else if (e.touches.length === 2) {
-    let newDist = getTouchDist(e.touches);
-    if (lastTouchDist) {
-      scale *= newDist / lastTouchDist;
-      scale = Math.max(0.5, Math.min(200, scale));
-    }
-    lastTouchDist = newDist;
-  }
-}, { passive: false });
+arel = toScreen(xt, yt);
+  if (arel != null && sinCheck==false) {
+    // myVar is not null and not undefined
 
-sketchContainer.addEventListener("touchend", () => {
-  dragging = false;
-  lastTouchDist = null;
-});
-// ---- End drag / touch support ----
+   circle(arel.x, arel.y, 20);
+ 
+  line(origin.x,origin.y, arel.x,arel.y);}
 
-let rtext = document.getElementById("restart");
-document.getElementById("restart").addEventListener("click", () => {
-  if (dt == 0){
-   dt = 1;
-    t += 0.01;
-   
-  rtext.innerText='Παύση';
-  }
-    else{
-   dt = 0;
-   rtext.innerText='Εκκίνηση';
-  }
-
-});
-let ampSlider = document.getElementById("amp");
-let atext = document.getElementById("ampText");
-ampSlider.addEventListener("input", function () {
-  amp=10*ampSlider.value;
-     atext.innerText = "Πλάτος: " + ampSlider.value + 'm';
-});
-let fSlider = document.getElementById("f");
-let ft = document.getElementById("fText");
-fSlider.addEventListener("input", function () {
-  
-     ft.innerText = "Συχνότητα: " + fSlider.value + 'hz';
-     w=2*Math.PI*fSlider.value;
-});
-let phaseSlider = document.getElementById("phaseSlider");
-let phaseText = document.getElementById("phaseText");
-phaseSlider.addEventListener("input", function () {
-    phtext=1*phaseSlider.value;
-    let num = 1*phaseSlider.value/Math.PI;
-    phaseText.innerText = "Αρχική φάση: " + formatPi(num.toFixed(2)) + " rad";
-     f0=phtext;
-     x1input.value = num.toFixed(1)*10;
-});
-let x2input =document.getElementById("x2");
-x2input.addEventListener("input", function () {
-  limit = Math.asin((Math.absx2)/amp);  
-  x2 = x2input.value*10;
-    
-    print(limit);
-     
-});
-let x1input =document.getElementById("x1");
-x1input.addEventListener("input", function () {
-    x1 = x1input.value*10;
-    f0 = Math.asin(x1/amp)*1;
-
-    phaseSlider.value=f0;
-    let num1 = 1*phaseSlider.value/Math.PI;
-    phaseText.innerText = "Αρχική φάση: " + formatPi(num1.toFixed(2)) + " rad";
-   
-});
-let open = false;
-
-document.addEventListener("DOMContentLoaded", () => {
-  const header = document.getElementById("tool-header");
-  const body = document.getElementById("tool-body");
-  body.style.display = "none";
-  header.onclick = () => {
-    open = !open;
-    body.style.display = open ? "block" : "none";
-  };
-
- const panel1 = document.getElementById("tool-window");
-  const header1 = document.getElementById("tool-header");
-
-  // start closed properly
-  panel1.classList.add("closed");
-
-header1.onclick = () => {
-  panel1.classList.toggle("closed");
-
-  const body = document.getElementById("tool-body");
-  body.style.display = panel1.classList.contains("closed")
-    ? "none"
-    : "flex";
-};
-});
-
-function getMobileCanvasHeight() {
-    let banner = document.querySelector('.banner');
-    let panel = document.querySelector('.control-panel');
-
-    let bannerH = banner ? banner.offsetHeight : 0;
-    let panelH = panel ? panel.offsetHeight : 0;
-
-    let available = windowHeight - bannerH - panelH + 10;
-    return max(available, 150);
+      //let v0 = createVector(width/2-130, windowHeight/2);
+      //  let v00 = createVector(width/2, windowHeight/2+130);
+  //let v1 = createVector(260, 0);
+    //let v2 = createVector(0, -260);
+  //drawArrow(v0, v1, '#0072B8');
+  //drawArrow(v00, v2, '#0072B8');
+}
+function Body_Spring (p){
+   ellipse(width/2+scale*200, p.y, 20);
+   drawFloorFade(200,-150,55);
+  drawingContext.setLineDash([5, 15]);
+  if(rotcheck==true){
+  line(p.x, p.y, width/2+scale*200, p.y);}
+    if(sinCheck==true&& p1!=null&&rotcheck==false){
+  line(p1.x, p.y, width/2+scale*200, p.y);}
+  drawingContext.setLineDash([0, 0]);
+  drawSpring(200,-150, 200, p.y, 5, 12);
 }
 
-function getMobileCanvasWidth() {
-  let container = document.getElementById('sketch-container');
-  return container ? container.clientWidth : windowWidth;
+function formatPi(num) {
+  if (num === 0) return "0";
+
+  // convert to fraction of π
+  let n = num;
+
+  // simplify common cases
+  if (n === 1) return "π";
+  if (n === 0.5) return "π/2";
+  if (n === 1.5) return "3π/2";
+  if (n === 2) return "2π";
+
+  return `${n}π`;
+}
+function trigDraw() {
+  push();
+
+  let T = 2 * Math.PI / w;
+  let phaseTime = t % 2*T;
+  let graphW = 60;
+  let cycleTime = t % (2 * T);
+
+for (let tau = 0; tau < cycleTime; tau += 0.01) {
+     p1 = toScreen(
+        (tau / T) * graphW,
+        -amp * Math.sin(w * tau + f0)
+    );
+
+    let p2 = toScreen(
+        ((tau + 0.01) / T) * graphW,
+        -amp * Math.sin(w * (tau + 0.01) + f0)
+    );
+
+    line(p1.x, p1.y, p2.x, p2.y);
+}
+
+  pop();
 }
