@@ -1,7 +1,15 @@
 /* eslint-disable no-unused-vars */
 
 function setup() {
-  let canvas = createCanvas(0.75*windowWidth,windowHeight)
+  let w, h;
+  if (windowWidth <= 700) {
+    w = windowWidth;
+    h = windowWidth * 0.6; // shorter ratio so sliders stay visible below
+  } else {
+    w = 0.75 * windowWidth;
+    h = windowHeight;
+  }
+  let canvas = createCanvas(w, h);
   canvas.parent("sketch-container")
      
 chart = new Chart(document.getElementById("myChart"), {
@@ -46,7 +54,6 @@ chart = new Chart(document.getElementById("myChart"), {
                 }
             
         },
-
                 
                 min: 0,
                 max: 10*u0*T+10
@@ -194,8 +201,12 @@ drawA(p,'αₖ');
 }
 
 
-
 function windowResized(){
-  resizeCanvas(0.75*windowWidth,windowHeight);
+  if (windowWidth <= 700) {
+    let w = windowWidth;
+    let h = windowWidth * 0.6; // shorter ratio so sliders stay visible below
+    resizeCanvas(w, h);
+  } else {
+    resizeCanvas(0.75*windowWidth, windowHeight);
+  }
 }
-
