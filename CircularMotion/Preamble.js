@@ -192,6 +192,6 @@ function getMobileCanvasHeight() {
 }
 
 function getMobileCanvasWidth() {
-    let available = windowWidth + 50;
-    return max(available, 150);
+  let container = document.getElementById('sketch-container');
+  return container ? container.clientWidth : windowWidth;
 }
