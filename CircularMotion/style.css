@@ -53,7 +53,6 @@ body {
     display: flex;
     justify-content: center;
     align-items:flex-start;
-    flex-direction: row-reverse; /* keeps controls on the LEFT, canvas on the RIGHT on desktop, since canvas now comes first in the HTML */
 }
 
 .control-panel {
@@ -193,9 +192,8 @@ body {
    ========================= */
 @media (max-width: 700px) {
 
-  html, body {
-    background-color: #F3722C;
-    overflow-y: auto;
+  body {
+    overflow-y: auto; /* allow scrolling since things stack now */
   }
 
   .banner {
@@ -204,27 +202,27 @@ body {
   }
 
   .main-panel {
-      order: 2 !important;
-    display: flex;
-    flex-direction: column; /* overrides row-reverse: canvas (first in HTML) on top, controls below */
+    flex-direction: column;
+    align-items: center;
   }
 
   #sketch-container {
-    order: 1 !important;
+    order: 1;
     width: 100%;
-    max-width: 100vw;
+    max-width: 120vw;
     display: flex;
     justify-content: center;
   }
 
   .control-panel {
+    order: 2;
     width: 100%;
     margin-top: 0;
   }
 
   #title {
-    margin-top: 4px;
-    padding-top: 4px;
+    font-size: 1.1em;
+    text-align: center;
   }
 
   .slidecontainer {
@@ -234,8 +232,6 @@ body {
 
   .slider {
     height: 35px; /* easier to grab with a finger */
-    background: #0072b8; /* matches your banner blue */
-    opacity: 0.6;
   }
 
   .slider::-webkit-slider-thumb {
@@ -283,5 +279,4 @@ body {
     width: 92vw !important;
     right: 4vw;
   }
-
-} /* end @media */
+}
