@@ -192,8 +192,9 @@ body {
    ========================= */
 @media (max-width: 700px) {
 
-  body {
-    overflow-y: auto; /* allow scrolling since things stack now */
+  html, body {
+    background-color: #F3722C;
+    overflow-y: auto;
   }
 
   .banner {
@@ -202,27 +203,27 @@ body {
   }
 
   .main-panel {
+    display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   #sketch-container {
-    order: 1;
+    order: 1 !important;
     width: 100%;
-    max-width: 120vw;
+    max-width: 100vw;
     display: flex;
     justify-content: center;
   }
 
   .control-panel {
-    order: 2;
+    order: 2 !important;
     width: 100%;
     margin-top: 0;
   }
 
   #title {
-    font-size: 1.1em;
-    text-align: center;
+    margin-top: 4px;
+    padding-top: 4px;
   }
 
   .slidecontainer {
@@ -232,6 +233,8 @@ body {
 
   .slider {
     height: 35px; /* easier to grab with a finger */
+    background: #0072b8; /* matches your banner blue */
+    opacity: 0.6;
   }
 
   .slider::-webkit-slider-thumb {
@@ -279,4 +282,5 @@ body {
     width: 92vw !important;
     right: 4vw;
   }
-}
+
+} /* end @media */
