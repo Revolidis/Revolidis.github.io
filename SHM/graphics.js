@@ -81,8 +81,6 @@ function drawAxes() {
   line(top.x, top.y, bottom.x, bottom.y);
 pop()
 }
-let offsetX = 0; // pan in screen pixels
-let offsetY = 0;
 function toScreen(x, y) {
   return {
     x: width / 2 + offsetX + x * scale,
