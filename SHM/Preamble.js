@@ -49,6 +49,43 @@ window.addEventListener(
   },
   { passive: false }
 );
+
+// ---- Touch support (mobile): two-finger pinch-to-zoom ----
+// This page has no drag/pan on desktop (only wheel-zoom), so touch only
+// mirrors the zoom behavior — no one-finger pan is added.
+const sketchContainer = document.getElementById("sketch-container");
+let lastTouchDist = null;
+
+function getTouchDist(touches) {
+  let dx = touches[0].clientX - touches[1].clientX;
+  let dy = touches[0].clientY - touches[1].clientY;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+sketchContainer.addEventListener("touchstart", (e) => {
+  if (e.touches.length === 2) {
+    lastTouchDist = getTouchDist(e.touches);
+  }
+}, { passive: false });
+
+sketchContainer.addEventListener("touchmove", (e) => {
+  if (e.touches.length === 2) {
+    e.preventDefault(); // stop the browser's own pinch-zoom from also firing
+
+    let newDist = getTouchDist(e.touches);
+    if (lastTouchDist) {
+      scale *= newDist / lastTouchDist;
+      scale = Math.max(0.5, Math.min(200, scale));
+    }
+    lastTouchDist = newDist;
+  }
+}, { passive: false });
+
+sketchContainer.addEventListener("touchend", () => {
+  lastTouchDist = null;
+});
+// ---- End touch support ----
+
 let rtext = document.getElementById("restart");
 document.getElementById("restart").addEventListener("click", () => {
   if (dt == 0){
@@ -130,4 +167,18 @@ header1.onclick = () => {
 };
 });
 
+function getMobileCanvasHeight() {
+    let banner = document.querySelector('.banner');
+    let panel = document.querySelector('.control-panel');
 
+    let bannerH = banner ? banner.offsetHeight : 0;
+    let panelH = panel ? panel.offsetHeight : 0;
+
+    let available = windowHeight - bannerH - panelH + 10;
+    return max(available, 150);
+}
+
+function getMobileCanvasWidth() {
+  let container = document.getElementById('sketch-container');
+  return container ? container.clientWidth : windowWidth;
+}
