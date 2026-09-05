@@ -82,7 +82,7 @@ window.addEventListener("mousemove", (e) => {
 // ---- Touch support (mobile): two-finger pinch-to-zoom ----
 // This page has no drag/pan on desktop (only wheel-zoom), so touch only
 // mirrors the zoom behavior — no one-finger pan is added.
-const sketchContainer = document.getElementById("sketch-container");
+
 let lastTouchDist = null;
 
 function getTouchDist(touches) {
