@@ -209,7 +209,7 @@ drawA(p,'αₖ');
 
 function windowResized(){
   if (windowWidth <= 700) {
-    let w = windowWidth;
+    let w =  getMobileCanvasWidth();
     let h = getMobileCanvasHeight();
     resizeCanvas(w, h);
   } else {
