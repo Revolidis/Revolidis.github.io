@@ -180,5 +180,12 @@ header1.onclick = () => {
     : "flex";
 };
 });
-
+function getMobileCanvasHeight() {
+  let banner = document.querySelector('.banner');
+  let panel = document.querySelector('.control-panel');
+  let bannerH = banner ? banner.offsetHeight : 0;
+  let panelH = panel ? panel.offsetHeight : 0;
+  let available = windowHeight - bannerH - panelH - 10; // small buffer
+  return max(available, 150); // never shrink below a usable minimum
+}
 
