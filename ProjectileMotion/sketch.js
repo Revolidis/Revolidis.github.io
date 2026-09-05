@@ -1,7 +1,15 @@
 /* eslint-disable no-unused-vars */
 
 function setup() {
-  let canvas = createCanvas(0.75*windowWidth,windowHeight)
+  let w, h;
+  if (windowWidth <= 700) {
+    w = getMobileCanvasWidth();
+    h = getMobileCanvasHeight();
+  } else {
+    w = 0.75 * windowWidth;
+    h = windowHeight;
+  }
+  let canvas = createCanvas(w, h);
   canvas.parent("sketch-container")
      
 chart = new Chart(document.getElementById("myChart"), {
@@ -147,6 +155,13 @@ uchart = new Chart(document.getElementById("uChart"), {
 document.getElementById("myChart").style.display = "none";
 document.getElementById("uChart").style.display = "none";
 }
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', () => {
+    windowResized();
+  });
+}
+
 function draw() {
   background(144, 190, 109);
   p= math_Handler();
@@ -186,6 +201,11 @@ drawD(p,'d');}
 
 
 function windowResized(){
-  resizeCanvas(0.75*windowWidth,windowHeight);
+  if (windowWidth <= 700) {
+    let w = getMobileCanvasWidth();
+    let h = getMobileCanvasHeight();
+    resizeCanvas(w, h);
+  } else {
+    resizeCanvas(0.75*windowWidth, windowHeight);
+  }
 }
-
