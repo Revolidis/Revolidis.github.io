@@ -189,11 +189,6 @@ function getMobileCanvasHeight() {
   return max(available, 150);
 }
 function getMobileCanvasWidth() {
-  let banner = document.querySelector('.banner');
-  let panel = document.querySelector('.control-panel');
-  let bannerW = banner ? banner.offsetWidth : 0;
-  let panelW = panel ? panel.offsetWidth : 0;
-  let available = windowWidth - bannerW - panelW + 10; // bumped from 10 to 20
-  return max(available, 150);
+    let available = windowWidth - 2;
+    return max(available, 150);
 }
-
