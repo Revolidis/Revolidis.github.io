@@ -154,7 +154,7 @@ body {
 }
 
 .slider:hover {
-    opacity: 1;
+    opacity: 0.9;
 }
 
 .slider::-webkit-slider-thumb {
@@ -202,12 +202,13 @@ body {
   }
 
   .main-panel {
+    display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
+
   #sketch-container {
-    order: 1;
+    order: 1 !important;
     width: 100%;
     max-width: 120vw;
     display: flex;
@@ -215,15 +216,16 @@ body {
   }
 
   .control-panel {
-    order: 2;
+    order: 2 !important;
     width: 100%;
     margin-top: 0;
   }
 
   #title {
-    font-size: 1.1em;
-    text-align: center;
+    margin-top: 4px;
+    padding-top: 4px;
   }
+}
 
   .slidecontainer {
     width: 95%;
@@ -232,7 +234,9 @@ body {
 
   .slider {
     height: 35px; /* easier to grab with a finger */
-  }
+    background: #0072b8; /* matches your banner blue */
+    opacity: 0.6;
+}
 
   .slider::-webkit-slider-thumb {
     width: 35px;
