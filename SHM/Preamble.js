@@ -54,6 +54,7 @@ window.addEventListener(
   },
   { passive: false }
 );
+const sketchContainer = document.getElementById("sketch-container");
 sketchContainer.addEventListener("mousedown", (e) => {
     if (e.button !== 0) return;
 
