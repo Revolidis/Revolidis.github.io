@@ -192,8 +192,9 @@ body {
    ========================= */
 @media (max-width: 700px) {
 
-  body {
-    overflow-y: auto; /* allow scrolling since things stack now */
+  html.body {
+      background-color: #F3722C;
+    overflow-y: hidden; 
   }
 
   .banner {
@@ -209,7 +210,7 @@ body {
   #sketch-container {
     order: 1;
     width: 100%;
-    max-width: 120vw;
+    max-width: 100vw;
     display: flex;
     justify-content: center;
   }
