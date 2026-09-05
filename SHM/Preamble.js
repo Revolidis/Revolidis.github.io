@@ -19,6 +19,8 @@ let rotcheck = false;
 let sinCheck = false;
 let arel;
 let p1;
+let offsetX =0;
+let offsetY =0;
 document.getElementById("rotCheck").addEventListener("change", function() {
     rotcheck = this.checked;
     if (rotcheck==0){
