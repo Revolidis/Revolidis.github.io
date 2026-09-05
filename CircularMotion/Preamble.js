@@ -115,6 +115,65 @@ container.addEventListener(
     },
     { passive: false }
 );
+let lastTouchDist = null;
+
+function getTouchDist(touches) {
+  let dx = touches[0].clientX - touches[1].clientX;
+  let dy = touches[0].clientY - touches[1].clientY;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+container.addEventListener("touchstart", (e) => {
+  if (e.touches.length === 1) {
+    // one finger = pan, mirrors mousedown
+    dragging = true;
+    lastX = e.touches[0].clientX;
+    lastY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    // two fingers = pinch to zoom, stop panning while pinching
+    dragging = false;
+    lastTouchDist = getTouchDist(e.touches);
+  }
+}, { passive: false });
+
+container.addEventListener("touchmove", (e) => {
+  e.preventDefault(); // stop the page itself from scrolling/zooming during interaction
+
+  if (e.touches.length === 1 && dragging) {
+    // mirrors mousemove
+    let dx = e.touches[0].clientX - lastX;
+    let dy = e.touches[0].clientY - lastY;
+    offsetX += dx;
+    offsetY += dy;
+    lastX = e.touches[0].clientX;
+    lastY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    // mirrors your wheel handler's zoom-toward-cursor math, centered on the pinch midpoint
+    let newDist = getTouchDist(e.touches);
+    if (lastTouchDist) {
+      let rect = container.getBoundingClientRect();
+      let midX = (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
+      let midY = (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
+
+      let worldX = (midX - width / 2 - offsetX) / scale;
+      let worldY = (midY - height / 2 - offsetY) / scale;
+
+      scale *= newDist / lastTouchDist;
+      scale = Math.max(0.2, Math.min(500, scale));
+
+      offsetX = midX - width / 2 - worldX * scale;
+      offsetY = midY - height / 2 - worldY * scale;
+
+      a = toScreen(amp, 0);
+    }
+    lastTouchDist = newDist;
+  }
+}, { passive: false });
+
+container.addEventListener("touchend", () => {
+  dragging = false;
+  lastTouchDist = null;
+});
 let rtext = document.getElementById("restart");
 document.getElementById("restart").addEventListener("click", () => {
   if (dt == 0){
