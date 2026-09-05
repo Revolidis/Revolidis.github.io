@@ -192,6 +192,6 @@ function getMobileCanvasHeight() {
 }
 
 function getMobileCanvasWidth() {
-    let available = windowWidth - 2;
+    let available = windowWidth + 50;
     return max(available, 150);
 }
