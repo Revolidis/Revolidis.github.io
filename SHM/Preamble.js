@@ -152,7 +152,7 @@ phaseSlider.addEventListener("input", function () {
 });
 let x2input =document.getElementById("x2");
 x2input.addEventListener("input", function () {
-  limit = Math.asin((Math.absx2)/amp);  
+  limit = Math.asin((Math.abs(x2)/amp);  
   x2 = x2input.value*10;
     
     print(limit);
