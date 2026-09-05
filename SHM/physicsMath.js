@@ -1,13 +1,8 @@
 function math_Handler(){
-
 substeps =1000;
-
  for (i = 0; i < substeps; i++) {
-
     t += (deltaTime / 1000 * dt) / substeps;
-
     let theta = w * t;
-
     let x = amp * Math.sin(theta + f0 + Math.PI/2);
     let y = amp * Math.cos(theta + f0 + Math.PI/2);
     
@@ -22,17 +17,15 @@ substeps =1000;
         break;
         
     }
-
     yprev = y;
 }
-
  let p = toScreen(
     amp * Math.sin(w * t + f0 + Math.PI/2),
     amp * Math.cos(w * t + f0 + Math.PI/2)
  );
-
  return p;
 }
+ 
 function Rotating_Vector(p){
 push()
 fill( '#0072B8');
