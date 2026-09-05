@@ -49,7 +49,30 @@ window.addEventListener(
   },
   { passive: false }
 );
+container.addEventListener("mousedown", (e) => {
+    if (e.button !== 0) return;
 
+    dragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+});
+
+window.addEventListener("mouseup", () => {
+    dragging = false;
+});
+
+window.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+
+    let dx = e.clientX - lastX;
+    let dy = e.clientY - lastY;
+
+    offsetX += dx;
+    offsetY += dy;
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+});
 // ---- Touch support (mobile): two-finger pinch-to-zoom ----
 // This page has no drag/pan on desktop (only wheel-zoom), so touch only
 // mirrors the zoom behavior — no one-finger pan is added.
