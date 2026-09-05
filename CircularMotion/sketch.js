@@ -3,6 +3,11 @@
 function setup() {
   let canvas = createCanvas(0.75*windowWidth,windowHeight)
   canvas.parent("sketch-container")
+    if (windowWidth <= 700) {
+    createCanvas(windowWidth, windowWidth * 0.75);
+  } else {
+    createCanvas(0.75 * windowWidth, windowHeight);
+  }
      
 chart = new Chart(document.getElementById("myChart"), {
   type: "line",
@@ -195,7 +200,15 @@ drawA(p,'αₖ');
 
 
 
-function windowResized(){
-  resizeCanvas(0.75*windowWidth,windowHeight);
+function windowResized() {
+  if (windowWidth <= 700) {
+    // Mobile: canvas fills the width, height scaled to fit nicely
+    let w = windowWidth;
+    let h = windowWidth * 0.75; // pick a ratio that looks good for your sim
+    resizeCanvas(w, h);
+  } else {
+    // Desktop: original behavior
+    resizeCanvas(0.75 * windowWidth, windowHeight);
+  }
 }
 
