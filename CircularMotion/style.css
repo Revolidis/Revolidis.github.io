@@ -190,7 +190,7 @@ body {
 /* =========================
    MOBILE LAYOUT
    ========================= */
-@media (max-width: 1000px) {
+@media (max-width: 700px) {
 
   body {
     overflow-y: auto; /* allow scrolling since things stack now */
