@@ -181,14 +181,17 @@ header1.onclick = () => {
 };
 });
 function getMobileCanvasHeight() {
-  let banner = document.querySelector('.banner');
-  let panel = document.querySelector('.control-panel');
-  let bannerH = banner ? banner.offsetHeight : 0;
-  let panelH = panel ? panel.offsetHeight : 0;
-  let available = windowHeight - bannerH - panelH + 20; // bumped from 10 to 20
-  return max(available, 150);
+    let banner = document.querySelector('.banner');
+    let panel = document.querySelector('.control-panel');
+
+    let bannerH = banner ? banner.offsetHeight : 0;
+    let panelH = panel ? panel.offsetHeight : 0;
+
+    let available = windowHeight - bannerH - panelH + 10;
+    return max(available, 150);
 }
+
 function getMobileCanvasWidth() {
-    let available = windowWidth - 10;
+    let available = windowWidth - 2;
     return max(available, 150);
 }
