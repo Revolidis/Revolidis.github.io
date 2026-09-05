@@ -14,8 +14,8 @@ function drawAxes() {
 pop()
 }
 
-let offsetX = 0; // pan in world units
-let offsetY = 0;
+//let offsetX = 0; // pan in world units
+//let offsetY = 0;
 
 
 
