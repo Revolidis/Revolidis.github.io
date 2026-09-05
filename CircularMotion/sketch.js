@@ -4,13 +4,14 @@ function setup() {
   let w, h;
   if (windowWidth <= 700) {
     w = windowWidth;
-    h = windowWidth * 0.6; // shorter ratio so sliders stay visible below
+    h = getMobileCanvasHeight();
   } else {
     w = 0.75 * windowWidth;
     h = windowHeight;
   }
   let canvas = createCanvas(w, h);
   canvas.parent("sketch-container")
+     
      
 chart = new Chart(document.getElementById("myChart"), {
   type: "line",
@@ -204,7 +205,7 @@ drawA(p,'αₖ');
 function windowResized(){
   if (windowWidth <= 700) {
     let w = windowWidth;
-    let h = windowWidth * 0.6; // shorter ratio so sliders stay visible below
+    let h = getMobileCanvasHeight();
     resizeCanvas(w, h);
   } else {
     resizeCanvas(0.75*windowWidth, windowHeight);
