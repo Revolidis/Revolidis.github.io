@@ -21,9 +21,7 @@ let arel;
 let p1;
 let offsetX =0;
 let offsetY =0;
-let dragging = false;
-let lastX = 0;
-let lastY = 0;
+
 document.getElementById("rotCheck").addEventListener("change", function() {
     rotcheck = this.checked;
     if (rotcheck==0){
@@ -54,20 +52,20 @@ window.addEventListener(
   },
   { passive: false }
 );
+let dragging = false;
+let lastX = 0;
+let lastY = 0;
+
 const sketchContainer = document.getElementById("sketch-container");
 
 sketchContainer.addEventListener("mousedown", (e) => {
-    console.log("MOUSE DOWN");
-
     if (e.button !== 0) return;
+
+    console.log("MOUSE DOWN");
 
     dragging = true;
     lastX = e.clientX;
     lastY = e.clientY;
-});
-
-window.addEventListener("mouseup", () => {
-    dragging = false;
 });
 
 window.addEventListener("mousemove", (e) => {
@@ -79,8 +77,14 @@ window.addEventListener("mousemove", (e) => {
     offsetX += dx;
     offsetY += dy;
 
+    console.log("offset:", offsetX, offsetY);
+
     lastX = e.clientX;
     lastY = e.clientY;
+});
+
+window.addEventListener("mouseup", () => {
+    dragging = false;
 });
 // ---- Touch support (mobile): two-finger pinch-to-zoom ----
 // This page has no drag/pan on desktop (only wheel-zoom), so touch only
