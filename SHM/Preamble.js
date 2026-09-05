@@ -55,7 +55,10 @@ window.addEventListener(
   { passive: false }
 );
 const sketchContainer = document.getElementById("sketch-container");
+
 sketchContainer.addEventListener("mousedown", (e) => {
+    console.log("MOUSE DOWN");
+
     if (e.button !== 0) return;
 
     dragging = true;
