@@ -40,7 +40,7 @@ function drawGrid() {
     line(a.x, a.y, b.x, b.y);
   }
 
-  for (let y = bottom; y <= top; y++) {
+  for (y = bottom; y <= top; y++) {
     let a = toScreen(left, y*50);
     let b = toScreen(right, y*50);
     line(a.x, a.y, b.x, b.y);
