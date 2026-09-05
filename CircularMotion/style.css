@@ -232,8 +232,8 @@ body {
   }
 
   .slider {
-    height: 35px; /* easier to grab with a finger */
-    background: #0072b8; /* matches your banner blue */
+    height: 35px;
+    background: #0072b8;
     opacity: 0.6;
   }
 
