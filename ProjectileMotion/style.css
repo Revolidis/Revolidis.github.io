@@ -127,7 +127,9 @@ body {
 
     margin-top: -10px;
 }
-
+#sketch-container {
+  touch-action: none;
+}
 .slidecontainer {
     width: 90%;
     margin-top: 20px;
@@ -186,3 +188,107 @@ body {
     align-items: flex-start;
 }
 #fieldLabel{display:none;}
+
+/* =========================
+   MOBILE LAYOUT
+   ========================= */
+@media (max-width: 700px) {
+
+  html,body {
+      background-color: #F3722C;
+    overflow-y: hidden; 
+        margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  }
+
+  .banner {
+    font-size: 0.85em;
+    padding: 6px;
+  }
+
+  .main-panel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #sketch-container {
+    order: 1;
+    width: 100%;
+    max-width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+    #sketch-container canvas {
+  display: block; /* removes tiny inline-element gap browsers add under canvases */
+}
+
+  .control-panel {
+    order: 2;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  #title {
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -20px;
+  }
+
+  .slidecontainer {
+    width: 95%;
+    margin-top: 14px;
+  }
+
+  .slider {
+    height: 35px; /* easier to grab with a finger */
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 35px;
+    height: 35px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 35px;
+    height: 35px;
+  }
+
+  #restart {
+    padding: 12px 22px;
+    font-size: 1.05em;
+    margin: 12px;
+  }
+
+  #tool-window {
+    top: 10px;
+    right: 10px;
+    width: 170px;
+  }
+
+  #tool-window.open {
+    width: 170px;
+  }
+
+  #tool-window.closed {
+    width: 22px;
+  }
+
+  #tool-body label {
+    font-size: 0.85em;
+  }
+
+  #myChart {
+    width: 92vw !important;
+    height: auto !important;
+    right: 4vw;
+    bottom: 10px;
+  }
+
+  #uChart {
+    width: 92vw !important;
+    right: 4vw;
+  }
+}
