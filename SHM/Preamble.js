@@ -19,9 +19,6 @@ let rotcheck = false;
 let sinCheck = false;
 let arel;
 let p1;
-let offsetX =0;
-let offsetY =0;
-
 document.getElementById("rotCheck").addEventListener("change", function() {
     rotcheck = this.checked;
     if (rotcheck==0){
@@ -52,44 +49,35 @@ window.addEventListener(
   },
   { passive: false }
 );
+
+// ---- Drag / pan support (desktop mouse + mobile touch) ----
+const sketchContainer = document.getElementById("sketch-container");
 let dragging = false;
 let lastX = 0;
 let lastY = 0;
 
-const sketchContainer = document.getElementById("sketch-container");
-
 sketchContainer.addEventListener("mousedown", (e) => {
-    if (e.button !== 0) return;
-
-    console.log("MOUSE DOWN");
-
-    dragging = true;
-    lastX = e.clientX;
-    lastY = e.clientY;
-});
-
-window.addEventListener("mousemove", (e) => {
-    if (!dragging) return;
-
-    let dx = e.clientX - lastX;
-    let dy = e.clientY - lastY;
-
-    offsetX += dx;
-    offsetY += dy;
-
-    console.log("offset:", offsetX, offsetY);
-
-    lastX = e.clientX;
-    lastY = e.clientY;
+  if (e.button !== 0) return;
+  dragging = true;
+  lastX = e.clientX;
+  lastY = e.clientY;
 });
 
 window.addEventListener("mouseup", () => {
-    dragging = false;
+  dragging = false;
 });
-// ---- Touch support (mobile): two-finger pinch-to-zoom ----
-// This page has no drag/pan on desktop (only wheel-zoom), so touch only
-// mirrors the zoom behavior — no one-finger pan is added.
 
+window.addEventListener("mousemove", (e) => {
+  if (!dragging) return;
+  let dx = e.clientX - lastX;
+  let dy = e.clientY - lastY;
+  offsetX += dx;
+  offsetY += dy;
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+
+// ---- Touch support (mobile): one-finger pan, two-finger pinch-to-zoom ----
 let lastTouchDist = null;
 
 function getTouchDist(touches) {
@@ -99,15 +87,27 @@ function getTouchDist(touches) {
 }
 
 sketchContainer.addEventListener("touchstart", (e) => {
-  if (e.touches.length === 2) {
+  if (e.touches.length === 1) {
+    dragging = true;
+    lastX = e.touches[0].clientX;
+    lastY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    dragging = false;
     lastTouchDist = getTouchDist(e.touches);
   }
 }, { passive: false });
 
 sketchContainer.addEventListener("touchmove", (e) => {
-  if (e.touches.length === 2) {
-    e.preventDefault(); // stop the browser's own pinch-zoom from also firing
+  e.preventDefault(); // stop the page/browser from scrolling or pinch-zooming on its own
 
+  if (e.touches.length === 1 && dragging) {
+    let dx = e.touches[0].clientX - lastX;
+    let dy = e.touches[0].clientY - lastY;
+    offsetX += dx;
+    offsetY += dy;
+    lastX = e.touches[0].clientX;
+    lastY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
     let newDist = getTouchDist(e.touches);
     if (lastTouchDist) {
       scale *= newDist / lastTouchDist;
@@ -118,9 +118,10 @@ sketchContainer.addEventListener("touchmove", (e) => {
 }, { passive: false });
 
 sketchContainer.addEventListener("touchend", () => {
+  dragging = false;
   lastTouchDist = null;
 });
-// ---- End touch support ----
+// ---- End drag / touch support ----
 
 let rtext = document.getElementById("restart");
 document.getElementById("restart").addEventListener("click", () => {
@@ -160,7 +161,7 @@ phaseSlider.addEventListener("input", function () {
 });
 let x2input =document.getElementById("x2");
 x2input.addEventListener("input", function () {
-  limit = Math.asin(Math.abs(x2)/amp);  
+  limit = Math.asin((Math.absx2)/amp);  
   x2 = x2input.value*10;
     
     print(limit);
