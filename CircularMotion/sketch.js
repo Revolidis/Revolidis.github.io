@@ -3,7 +3,7 @@
 function setup() {
   let w, h;
   if (windowWidth <= 700) {
-    w = windowWidth;
+    w =  getMobileCanvasWidth();
     h = getMobileCanvasHeight();
   } else {
     w = 0.75 * windowWidth;
