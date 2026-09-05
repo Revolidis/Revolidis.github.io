@@ -155,6 +155,11 @@ uchart = new Chart(document.getElementById("uChart"), {
 document.getElementById("myChart").style.display = "none";
 document.getElementById("uChart").style.display = "none";
 }
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', () => {
+    windowResized();
+  });
+}
 function draw() {
   background(144, 190, 109);
 
