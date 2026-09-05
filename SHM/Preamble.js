@@ -51,7 +51,7 @@ window.addEventListener(
   },
   { passive: false }
 );
-container.addEventListener("mousedown", (e) => {
+sketchContainer.addEventListener("mousedown", (e) => {
     if (e.button !== 0) return;
 
     dragging = true;
