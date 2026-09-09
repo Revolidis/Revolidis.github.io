@@ -302,17 +302,16 @@ function draw() {
 //drawY(p,'y');}
 //}
 
-if(xcheck){
+if(xcheck1){
 
-    if(t>=0){
 drawU(p,'u');}
-}
+
+
 if(dCheck){
 
-    if(t>=0){
 drawA(p,'α');}
 
-}
+
 if(rotcheck){
 drawX(p,'x');}
 }
