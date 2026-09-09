@@ -163,9 +163,9 @@ if (window.visualViewport) {
 function draw() {
   background(144, 190, 109);
 
-   let x = f*t*10;
-   
-    let y = -5;
+   let x = f*t*10+1/2*amp*(t)**2*10;
+   u = 10*f+10*amp*t; 
+    let y = 0;
     time_Handler();
   p= math_Handler(x,y);
     drawAxes()
@@ -183,15 +183,18 @@ function draw() {
 //drawY(p,'y');}
 //}
 
-if(ucheck1){
+if(xcheck){
 
     if(t>=0){
 drawU(p,'u');}
 }
-if(checkD){
+if(dCheck){
+
+    if(t>=0){
+drawA(p,'α');}
+}
+if(rotcheck){
 drawX(p,'x');}
-
-
 }
 
 
