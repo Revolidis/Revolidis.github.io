@@ -10,7 +10,7 @@ function time_Handler(x,y) {
         if (t >= Math.abs( float(T))) {
 
            //t = T;
-            print('ge')
+      
             running = false;
             dt = 0;
             simSpeed = 0;
@@ -35,7 +35,7 @@ function math_Handler(x,y) {
 }
 
 function Projectile(p) {
-    circle(p.x, p.y, scale * 10);
+    circle(p.x, p.y, 30);
 
     chart.options.scales.x.max = Math.ceil(2 * amp + Math.PI / 2);
     chart.options.scales.y.max = Math.ceil(2 * amp);
