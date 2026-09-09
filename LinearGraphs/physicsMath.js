@@ -37,18 +37,40 @@ function math_Handler(x,y) {
 function Projectile(p) {
     circle(p.x, p.y, 30);
 
-    chart.options.scales.x.max = Math.ceil(2 * amp + Math.PI / 2);
-    chart.options.scales.y.max = Math.ceil(2 * amp);
+    myChart.options.scales.x.max = Math.ceil(T);
+    myChart.options.scales.y.max = Math.ceil(6);
+     myChart.options.scales.y.min = Math.ceil(-6);
 
-    chart.update('none');
-
-    chart.data.datasets[0].data.push({
-        x: p.x,
-        y: p.y
+    myChart.data.datasets[0].data.push({
+        x: t,
+        y: amp
     });
 
-    chart.update('none');
+    myChart.update('none');
+
+    uChart.options.scales.x.max = Math.ceil(T);
+    uChart.options.scales.y.max = Math.ceil(f0+amp*T );
+
+    uChart.data.datasets[0].data.push({
+        x: t,
+        y: f0+amp*t 
+    });
+
+    uChart.update('none');
+
+
+        xChart.options.scales.x.max = Math.ceil(T);
+    xChart.options.scales.y.max = Math.ceil(f*T + 1/2*amp*T**2);
+
+    xChart.data.datasets[0].data.push({
+        x: t,
+        y: f*t + 1/2*amp*t**2
+    });
+
+    xChart.update('none');
 }
+    
+
 
 function formatPi(num) {
   if (num === 0) return "0";
