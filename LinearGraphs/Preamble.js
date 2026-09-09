@@ -1,4 +1,4 @@
-var x = 0;
+var x1 = 0;
 var t = 0;
 let y = 0;
 let f0=1;
@@ -40,18 +40,25 @@ document.getElementById("dCheck").addEventListener("change", function() {
     checkD = this.checked;
    
 });
-document.getElementById("xCheck").addEventListener("change", function() {
+document.getElementById("xCheck1").addEventListener("change", function() {
     xcheck = this.checked;
-   
+ console.log("xCheck:", xcheck);
+    if (xcheck == false) {
+        document.getElementById("xChart").style.display = "none";
+    } else {
+        document.getElementById("xChart").style.display = "flex";
+    }
 });
 document.getElementById("uCheck").addEventListener("change", function() {
     ucheck = this.checked;
-   
+
+    if (ucheck == false) {
+        document.getElementById("uChart").style.display = "none";
+    } else {
+        document.getElementById("uChart").style.display = "flex";
+    }
 });
-document.getElementById("uCheck1").addEventListener("change", function() {
-    ucheck1 = this.checked;
-   
-});
+
     document.getElementById("dCheck").addEventListener("change", function() {
     dCheck = this.checked;
       
@@ -60,7 +67,15 @@ document.getElementById("uCheck1").addEventListener("change", function() {
     document.getElementById("aCheck").addEventListener("change", function() {
     aCheck = this.checked;
    
+     if (aCheck==false){
+   document.getElementById("myChart").style.display = "none";
+    }
+else{document.getElementById("myChart").style.display = "flex";
+}
 });
+
+
+
 const container = document.getElementById("sketch-container");
 
 container.addEventListener("mousedown", (e) => {
@@ -195,8 +210,9 @@ let atext = document.getElementById("ampText");
 ampSlider.addEventListener("input", function () {
   amp=ampSlider.value;
   t=0;
-  chart.data.datasets[0].data = [];
-  uchart.data.datasets[0].data = [];
+  myChart.data.datasets[0].data = [];
+  uChart.data.datasets[0].data = [];
+  xChart.data.datasets[0].data = [];
   
      atext.innerText = "Επιτάχυνση: " + ampSlider.value + 'm/s²';
 });
@@ -204,10 +220,12 @@ let fSlider = document.getElementById("f");
 let ft = document.getElementById("fText");
 fSlider.addEventListener("input", function () {
     f= float(fSlider.value);
+    f0= float(fSlider.value);
     print(f);
       t=0;
-      uchart.data.datasets[0].data = [];
-      chart.data.datasets[0].data = [];
+  myChart.data.datasets[0].data = [];
+  uChart.data.datasets[0].data = [];
+  xChart.data.datasets[0].data = [];
      ft.innerText = "Ταχύτητα: " +f + 'm/s';
 
 });
@@ -215,8 +233,9 @@ let TSlider = document.getElementById("T");
 TSlider.addEventListener("input", function () {
       T=TSlider.value;
       t=0;
-      uchart.data.datasets[0].data = [];
-      chart.data.datasets[0].data = [];
+  myChart.data.datasets[0].data = [];
+  uChart.data.datasets[0].data = [];
+  xChart.data.datasets[0].data = [];
      ΤText.innerText = "Χρονική διάρκεια: " + Math.abs(T) + 's';
     
 });
