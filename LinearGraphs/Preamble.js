@@ -1,10 +1,10 @@
 var x = 0;
 var t = 0;
 let y = 0;
-let f0=0;
+let f0=1;
 let f=f0;
 let scale = 3; // pixels per unit
-let amp=5;
+let amp=0;
 u0=10;
 let r =5;
 let T=10;
@@ -20,6 +20,7 @@ let xcheck = false;
 let ucheck = false;
 let ucheck1 = false;
 let aCheck = false;
+let dCheck = false;
 let arel;
 let p1;
 let offsetX =0;
@@ -29,8 +30,10 @@ let lastX;
 let lastY;
 let A=1;
 let o;
+let u =1;
 document.getElementById("rotCheck").addEventListener("change", function() {
     rotcheck = this.checked;
+    print(rotcheck);
    
 });
 document.getElementById("dCheck").addEventListener("change", function() {
@@ -49,11 +52,10 @@ document.getElementById("uCheck1").addEventListener("change", function() {
     ucheck1 = this.checked;
    
 });
-
-document.getElementById("sinCheck").addEventListener("change", function() {
-    sinCheck = this.checked;
-
-    });
+    document.getElementById("dCheck").addEventListener("change", function() {
+    dCheck = this.checked;
+      
+});
 
     document.getElementById("aCheck").addEventListener("change", function() {
     aCheck = this.checked;
@@ -206,7 +208,7 @@ fSlider.addEventListener("input", function () {
       t=0;
       uchart.data.datasets[0].data = [];
       chart.data.datasets[0].data = [];
-     ft.innerText = "Ταχύτητα: " + Math.abs(f) + 'm/s';
+     ft.innerText = "Ταχύτητα: " +f + 'm/s';
 
 });
 let TSlider = document.getElementById("T");
