@@ -126,8 +126,9 @@ function fDraw(c) {
 }
 function drawX(p, label) {
     push();
-
     a = toScreen(0, 0);
+    if(p.x!=a.x){
+
 
     // Horizontal x-axis arrow at the particle's height
     drawArrow(
@@ -141,9 +142,9 @@ function drawX(p, label) {
 push();
     fill(color(0,114,184));
     textSize(20);
-    text(label, (a.x + p.x) / 2, (a.y-60) );
-pop();
-    
+    text(label, (a.x + p.x) / 2, (a.y-35) );
+pop();}
+   } 
 function drawY(p,label){
     push();
     a=toScreen(0,0);
@@ -157,7 +158,7 @@ function drawY(p,label){
     textSize(20);
     text(label, (a.x-30 + a.x-30) / 2, (a.y + p.y+amp*scale+10) / 2 - 10);
     pop()
-}}
+}
 function drawOmega(p,label){
     push();
     a=toScreen(0,0);
@@ -197,9 +198,9 @@ function drawU(p, label) {
     let startY = p.y;
 
     // Arrow endpoint
-    let endX = p.x + A * (-2 * w * T * Math.sin(w * t)) * scale;
-    let endY = p.y
-             + A * (-2 * w * T * Math.cos(w * t)) * scale;
+    let endX = p.x + u;
+    let endY = p.y;
+             
 
     // Arrow direction
     let dx = endX - startX;
@@ -253,16 +254,16 @@ function drawU(p, label) {
     pop();
 }
 function drawA(p, label) {
-    A = w < 0 ? -1 : 1;
+   A = w < 0 ? -1 : 1;
 
     // Arrow start
     let startX = p.x;
-    let startY = p.y;
+    let startY = p.y-50;
 
     // Arrow endpoint
-    let endX = p.x + A * (-2 * w * T * Math.cos(w * t)) * scale;
-    let endY = p.y
-             + A * (2 * w * T * Math.sin(w * t)) * scale;
+    let endX = p.x + amp*20;
+    let endY = p.y-50;
+             
 
     // Arrow direction
     let dx = endX - startX;
@@ -285,7 +286,7 @@ function drawA(p, label) {
     ny *= A;
 
     // Fixed distance from arrow tip
-    let offset = 18;
+    let offset = -18;
 
     // Label position
     let labelX = endX + nx * offset;
