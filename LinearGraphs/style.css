@@ -281,16 +281,21 @@ body {
   #tool-body label {
     font-size: 0.85em;
   }
+#myChart,#uChart,#xChart {
+    
+    position: absolute;
+    bottom:50px;
+    right: 10px;
 
-  #myChart {
-    width: 92vw !important;
-    height: auto !important;
-    right: 4vw;
-    bottom: 10px;
-  }
+    width: 500px !important;
+    height: 300px !important;
 
-  #uChart {
-    width: 92vw !important;
-    right: 4vw;
-  }
+    background: rgba(255,255,255,0.9);
+    border-radius: 8px;
+
+    z-index: 100;
+
+    pointer-events: none;
+    display:none;
+}
 }
