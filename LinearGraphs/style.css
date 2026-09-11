@@ -285,10 +285,10 @@ body {
 #myChart,#uChart,#xChart {
     
     position: absolute;
-    bottom:50px;
-    right: 30px;
+    bottom:10vh;
+    right: 20vw;
 
-    width: 40vw !important;
+    width: 80vw !important;
     height: 30vh !important;
 
     background: rgba(255,255,255,0.9);
