@@ -113,6 +113,9 @@ uChart = new Chart(document.getElementById("uChart"), {
     },
 
     options: {
+      responsive: true,
+    maintainAspectRatio: false,
+    devicePixelRatio: 2,
         animation: false,
         parsing: false,
 
@@ -198,6 +201,9 @@ xChart = new Chart(document.getElementById("xChart"), {
     },
 
     options: {
+      responsive: true,
+    maintainAspectRatio: false,
+    devicePixelRatio: 2
         animation: false,
         parsing: false,
 
