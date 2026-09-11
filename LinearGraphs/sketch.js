@@ -203,7 +203,7 @@ xChart = new Chart(document.getElementById("xChart"), {
     options: {
       responsive: true,
     maintainAspectRatio: false,
-    devicePixelRatio: 2,
+    devicePixelRatio:2,
         animation: false,
         parsing: false,
 
@@ -217,14 +217,14 @@ xChart = new Chart(document.getElementById("xChart"), {
             }
         },
 
-        scales: {
+       scales: {
 
             x: {
                 type: "linear",
 
                 grid: {
                     display: true,
-                    lineWidth: 2,
+                    lineWidth: 3,
                     color: "rgba(0, 0, 0, 0.25)"
                 },
 
@@ -253,7 +253,7 @@ xChart = new Chart(document.getElementById("xChart"), {
 
                 grid: {
                     display: true,
-                    lineWidth: 2,
+                    lineWidth: 5,
                     color: "rgba(0, 0, 0, 0.25)"
                 },
 
@@ -273,7 +273,7 @@ xChart = new Chart(document.getElementById("xChart"), {
                     }
                 },
 
-                min: 0,
+                min: (amp * f < 0) ? -(f ** 2) / (2 * amp) : 0,
                 max: 10 * f * T + 5 * amp * T ** 2
             }
         }

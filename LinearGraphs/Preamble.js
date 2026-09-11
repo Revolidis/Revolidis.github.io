@@ -3,7 +3,7 @@ var t = 0;
 let y = 0;
 let f0=1;
 let f=f0;
-let scale = 3; // pixels per unit
+let scale = 1; // pixels per unit
 let amp=0;
 u0=10;
 let r =5;
@@ -32,6 +32,7 @@ let lastY;
 let A=1;
 let o;
 let u =1;
+let x0=0;
 document.getElementById("rotCheck").addEventListener("change", function() {
     rotcheck = this.checked;
     print(rotcheck);

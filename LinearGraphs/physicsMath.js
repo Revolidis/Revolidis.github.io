@@ -49,11 +49,11 @@ function Projectile(p) {
     myChart.update('none');
 
     uChart.options.scales.x.max = Math.ceil(T);
-    uChart.options.scales.y.max = Math.ceil(f0+amp*T );
-
+    uChart.options.scales.y.max = Math.ceil(55);
+    uChart.options.scales.y.min = Math.floor(-55);
     uChart.data.datasets[0].data.push({
         x: t,
-        y: f0+amp*t 
+        y: f+amp*t
     });
 
     uChart.update('none');

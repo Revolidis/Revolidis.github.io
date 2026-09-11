@@ -282,15 +282,29 @@ body {
   #tool-body label {
     font-size: 0.85em;
   }
+#charts-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .chart-wrapper {
-    width: 500px;
-    max-width: 92vw; /* shrinks on narrow phones, but proportionally */
-    aspect-ratio: 3 / 8; /* locks width:height ratio — change the numbers to taste */
-    margin: 0 auto;
     position: relative;
-    display: none;
-    background: rgba(255,255,255,0.9);
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 5 / 3; /* wide, fixed-shape box — was 3/8 (very tall) in mobile; adjust to taste */
+    margin: 0 auto;
+    display: none; /* shown via JS per checkbox */
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
+}
+
+.chart-wrapper canvas {
+    position: absolute !important;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
 }
 #myChart,#uChart,#xChart {
     
