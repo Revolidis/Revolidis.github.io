@@ -26,7 +26,7 @@ myChart = new Chart(document.getElementById("myChart"), {
 
     options: {
       responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     devicePixelRatio: 2,
         animation: false,
         parsing: false,
@@ -114,7 +114,7 @@ uChart = new Chart(document.getElementById("uChart"), {
 
     options: {
       responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     devicePixelRatio: 2,
         animation: false,
         parsing: false,
@@ -202,7 +202,7 @@ xChart = new Chart(document.getElementById("xChart"), {
 
     options: {
       responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     devicePixelRatio: 2,
         animation: false,
         parsing: false,
