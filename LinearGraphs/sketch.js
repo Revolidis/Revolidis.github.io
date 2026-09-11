@@ -182,7 +182,7 @@ uChart = new Chart(document.getElementById("uChart"), {
                 },
 
                 min: 0,
-                max: f + amp * T
+                max: 10*f+10 
             }
         }
     }
@@ -248,33 +248,51 @@ xChart = new Chart(document.getElementById("xChart"), {
                 max: T
             },
 
-            y: {
-                type: "linear",
+y: {
+    type: "linear",
 
-                grid: {
-                    display: true,
-                    lineWidth: 5,
-                    color: "rgba(0, 0, 0, 0.25)"
-                },
 
-                ticks: {
-                    stepSize: 10/T,
+    grid: {
+        display: true,
+        lineWidth: 2,
+        color: "rgba(0, 0, 0, 0.25)"
+    },
 
-                    font: {
-                        size: 22
-                    }
-                },
 
-                title: {
-                    display: true,
-                    text: "x (m)",
-                    font: {
-                        size: 22
-                    }
-                },
+    ticks: {
+        stepSize: 10 / T,
 
-                min: (amp * f < 0) ? -(f ** 2) / (2 * amp) : 0,
-                max: 10 * f * T + 5 * amp * T ** 2
+        font: {
+            size: 22
+        }
+    },
+
+    title: {
+        display: true,
+        text: "x (m)",
+        font: {
+            size: 22
+        }
+    },
+
+
+
+min: Math.min(
+    0,
+    f * T + 0.5 * amp * T ** 2,
+    (amp !== 0 && 0 < -f / amp && -f / amp < T)
+        ? -(f ** 2) / (2 * amp)
+        : Infinity
+),
+
+max: Math.max(
+    0,
+    f * T + 0.5 * amp * T ** 2,
+    (amp !== 0 && 0 < -f / amp && -f / amp < T)
+        ? -(f ** 2) / (2 * amp)
+        : -Infinity
+)
+
             }
         }
     }
