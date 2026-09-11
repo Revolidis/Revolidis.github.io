@@ -56,7 +56,7 @@ document.getElementById("xCheck1").addEventListener("change", function() {
         document.getElementById("xChart").style.display = "flex";
                 if (windowWidth <= 700){
          document.getElementById("slidecontainer").style.display = "none";}
-    }
+    }windowResized();
 });
 document.getElementById("uCheck").addEventListener("change", function() {
     ucheck = this.checked;
@@ -70,7 +70,7 @@ document.getElementById("uCheck").addEventListener("change", function() {
                 if (windowWidth <= 700){
         document.getElementById("slidecontainer").style.display = "none";
                 }
-    }
+    }windowResized();
 });
 
     document.getElementById("dCheck").addEventListener("change", function() {
@@ -89,7 +89,7 @@ document.getElementById("uCheck").addEventListener("change", function() {
 else{document.getElementById("myChart").style.display = "flex";
           if (windowWidth <= 700){
 document.getElementById("slidecontainer").style.display = "none";}
-}
+}windowResized();
 });
 
 
