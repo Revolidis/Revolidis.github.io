@@ -248,32 +248,42 @@ xChart = new Chart(document.getElementById("xChart"), {
                 max: T
             },
 
-            y: {
-                type: "linear",
+y: {
+    type: "linear",
 
-                grid: {
-                    display: true,
-                    lineWidth: 2,
-                    color: "rgba(0, 0, 0, 0.25)"
-                },
+    grid: {
+        display: true,
+        lineWidth: 2,
+        color: "rgba(0, 0, 0, 0.25)"
+    },
 
-                ticks: {
-                    stepSize: 10/T,
+    ticks: {
+        stepSize: 10 / T,
 
-                    font: {
-                        size: 22
-                    }
-                },
+        font: {
+            size: 22
+        }
+    },
 
-                title: {
-                    display: true,
-                    text: "x (m)",
-                    font: {
-                        size: 22
-                    }
-                },
-                 min: (amp <0|| f < 0) ? -(f ** 2) / (2 * Math.abs(amp)) : 0,
-                max: 10 * f * T + 5 * amp * T ** 2
+    title: {
+        display: true,
+        text: "x (m)",
+        font: {
+            size: 22
+        }
+    },
+
+    min: Math.min(
+        0,
+        f * T + 0.5 * amp * T ** 2,
+        (amp * f < 0) ? -f ** 2 / (2 * amp) : Infinity
+    ),
+
+    max: Math.max(
+        0,
+        f * T + 0.5 * amp * T ** 2,
+        (amp * f < 0) ? -f ** 2 / (2 * amp) : -Infinity
+    )
             }
         }
     }
