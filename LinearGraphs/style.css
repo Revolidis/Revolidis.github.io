@@ -285,7 +285,7 @@ body {
 .chart-wrapper {
     width: 500px;
     max-width: 92vw; /* shrinks on narrow phones, but proportionally */
-    aspect-ratio: 6 / 3; /* locks width:height ratio — change the numbers to taste */
+    aspect-ratio: 6 / 3.5; /* locks width:height ratio — change the numbers to taste */
     margin: 0 auto;
     position: relative;
     display: none;
