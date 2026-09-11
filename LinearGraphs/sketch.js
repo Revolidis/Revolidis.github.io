@@ -272,7 +272,7 @@ xChart = new Chart(document.getElementById("xChart"), {
                         size: 22
                     }
                 },
-                 min: amp > 0 ? -(f0 ** 2) / (2 * Math.abs(amp)) : 0,
+                 min: (amp * f < 0) ? -(f ** 2) / (2 * amp) : 0,,
                 max: 10 * f * T + 5 * amp * T ** 2
             }
         }
