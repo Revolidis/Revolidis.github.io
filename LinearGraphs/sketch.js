@@ -182,7 +182,7 @@ uChart = new Chart(document.getElementById("uChart"), {
                 },
 
                 min: 0,
-                max: f + amp * T
+                max: f + amp * T+10
             }
         }
     }
@@ -273,7 +273,7 @@ xChart = new Chart(document.getElementById("xChart"), {
                     }
                 },
 
-                min: 0,
+                min: -10 * f * T + 5 * amp * T ** 2,
                 max: 10 * f * T + 5 * amp * T ** 2
             }
         }
