@@ -288,8 +288,8 @@ body {
     bottom:50px;
     right: 10px;
 
-    width: 500px !important;
-    height: 300px !important;
+    width: 40vw !important;
+    height: 30vh !important;
 
     background: rgba(255,255,255,0.9);
     border-radius: 8px;
