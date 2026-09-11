@@ -18,13 +18,16 @@ myChart = new Chart(document.getElementById("myChart"), {
 
     data: {
         datasets: [{
-            label: "y-t",
+            label: "a-t",
             data: [],
             pointRadius: 0
         }]
     },
 
     options: {
+      responsive: true,
+    maintainAspectRatio: false,
+    devicePixelRatio: 2,
         animation: false,
         parsing: false,
 
@@ -84,7 +87,7 @@ myChart = new Chart(document.getElementById("myChart"), {
 
                 title: {
                     display: true,
-                    text: "y (m)",
+                    text: "a (m/s²)",
                     font: {
                         size: 22
                     }
