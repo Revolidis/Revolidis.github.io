@@ -49,8 +49,13 @@ document.getElementById("xCheck1").addEventListener("change", function() {
 
     if (xcheck1 == false) {
         document.getElementById("xChart").style.display = "none";
+        if (windowWidth <= 700){
+        document.getElementById("slidecontainer").style.display = "flex";
+        }
     } else {
         document.getElementById("xChart").style.display = "flex";
+                if (windowWidth <= 700){
+         document.getElementById("slidecontainer").style.display = "none";}
     }
 });
 document.getElementById("uCheck").addEventListener("change", function() {
@@ -58,8 +63,13 @@ document.getElementById("uCheck").addEventListener("change", function() {
 
     if (ucheck == false) {
         document.getElementById("uChart").style.display = "none";
+                if (windowWidth <= 700){
+        document.getElementById("slidecontainer").style.display = "flex";}
     } else {
         document.getElementById("uChart").style.display = "flex";
+                if (windowWidth <= 700){
+        document.getElementById("slidecontainer").style.display = "none";
+                }
     }
 });
 
@@ -73,10 +83,15 @@ document.getElementById("uCheck").addEventListener("change", function() {
    
      if (aCheck==false){
    document.getElementById("myChart").style.display = "none";
+           if (windowWidth <= 700){
+  document.getElementById("slidecontainer").style.display = "flex";}
     }
 else{document.getElementById("myChart").style.display = "flex";
+          if (windowWidth <= 700){
+document.getElementById("slidecontainer").style.display = "none";}
 }
 });
+
 
 
 
