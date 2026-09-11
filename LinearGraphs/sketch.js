@@ -273,17 +273,21 @@ y: {
         }
     },
 
-    min: Math.min(
-        0,
-        f * T + 0.5 * amp * T ** 2,
-        (amp * f < 0) ? -f ** 2 / (2 * amp) : Infinity
-    ),
+min: Math.min(
+    0,
+    f * T + 0.5 * amp * T ** 2,
+    (amp !== 0 && 0 < -f / amp && -f / amp < T)
+        ? -(f ** 2) / (2 * amp)
+        : Infinity
+),
 
-    max: Math.max(
-        0,
-        f * T + 0.5 * amp * T ** 2,
-        (amp * f < 0) ? -f ** 2 / (2 * amp) : -Infinity
-    )
+max: Math.max(
+    0,
+    f * T + 0.5 * amp * T ** 2,
+    (amp !== 0 && 0 < -f / amp && -f / amp < T)
+        ? -(f ** 2) / (2 * amp)
+        : -Infinity
+)
             }
         }
     }
