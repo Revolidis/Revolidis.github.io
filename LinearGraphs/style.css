@@ -232,17 +232,17 @@ body {
     margin-top: 0;
   }
 
-  #title {
+#title {
     font-size: 1.1em;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: -20px;
+    margin-bottom: 6px; /* small, positive — no longer relies on collapsing into slidecontainer */
     justify-items: center;
-  }
+}
 
   .slidecontainer {
     width: 95%;
-    margin-top: 14px;
+    margin-top: 4px;
   }
 
   .slider {
