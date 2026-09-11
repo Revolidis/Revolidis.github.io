@@ -245,17 +245,17 @@ body {
   }
 
   .slider {
-    height: 35px; /* easier to grab with a finger */
+    height: 15px; /* easier to grab with a finger */
   }
 
   .slider::-webkit-slider-thumb {
-    width: 35px;
-    height: 35px;
+    width: 15px;
+    height: 15px;
   }
 
   .slider::-moz-range-thumb {
-    width: 35px;
-    height: 35px;
+    width: 15px;
+    height: 15px;
   }
 
   #restart {
@@ -285,7 +285,7 @@ body {
 #myChart,#uChart,#xChart {
     
     position: absolute;
-    bottom:10vh;
+    bottom:20vh;
     right: 10vw;
 
     width: 80vw !important;
