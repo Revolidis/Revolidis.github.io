@@ -282,7 +282,16 @@ body {
   #tool-body label {
     font-size: 0.85em;
   }
-
+.chart-wrapper {
+    width: 500px;
+    max-width: 92vw; /* shrinks on narrow phones, but proportionally */
+    aspect-ratio: 5 / 3; /* locks width:height ratio — change the numbers to taste */
+    margin: 0 auto;
+    position: relative;
+    display: none;
+    background: rgba(255,255,255,0.9);
+    border-radius: 8px;
+}
 #myChart,#uChart,#xChart {
     
     position: absolute;
