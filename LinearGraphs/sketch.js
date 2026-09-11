@@ -273,7 +273,7 @@ xChart = new Chart(document.getElementById("xChart"), {
                     }
                 },
 
-                min: -10 * f * T + 5 * amp * T ** 2,
+                min: -15,
                 max: 10 * f * T + 5 * amp * T ** 2
             }
         }
