@@ -31,15 +31,24 @@ body {
   position: relative;
   display: block;
 }
-
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4 / 3; /* wide, fixed-shape box — was 3/8 (very tall) in mobile; adjust to taste */
+    margin: 0 auto;
+    display: none; /* shown via JS per checkbox */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+}
 #myChart,#uChart,#xChart {
     
     position: absolute;
-    bottom:50px;
-    right: 10px;
+    bottom:5vh;
+    right: 3vw;
 
-    width: 500px !important;
-    height: 300px !important;
+    width: 40vw !important;
+    height: 30vh !important;
 
     background: rgba(255,255,255,0.9);
     border-radius: 8px;
@@ -54,6 +63,7 @@ body {
     justify-content: center;
     align-items:flex-start;
 }
+
 
 .control-panel {
     background-color: #F3722C;

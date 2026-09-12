@@ -33,6 +33,7 @@ let A=1;
 let o;
 let u =1;
 let x0=0;
+let candidates;
 document.getElementById("rotCheck").addEventListener("change", function() {
     rotcheck = this.checked;
     print(rotcheck);

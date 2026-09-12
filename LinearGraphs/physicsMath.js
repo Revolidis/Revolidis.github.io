@@ -33,7 +33,26 @@ function math_Handler(x,y) {
 
     return p;
 }
-
+function getXBounds() {
+    let candidates = [0, f * T + 0.5 * amp * T ** 2]; // x(0) and x(T)
+    let tStar = (amp !== 0) ? -f / amp : null; // time of the vertex (turning point)
+    if (tStar !== null && tStar >= 0 && tStar <= T) {
+        candidates.push(-0.5 * f ** 2 / amp); // x at the vertex, if it falls within [0, T]
+    }
+    return {
+        min: Math.min(...candidates),
+        max: Math.max(...candidates)
+    };
+}
+function getUBounds() {
+    if (amp!=0){
+    candidates = [f, f + amp * T];}
+    else{ candidates = [f+3, f-3];} // u(0) and u(T) — linear in t, no interior turning point
+    return {
+        min: Math.min(...candidates),
+        max: Math.max(...candidates)
+    };
+}
 function Projectile(p) {
     circle(p.x, p.y, 30);
 
@@ -48,19 +67,23 @@ function Projectile(p) {
 
     myChart.update('none');
 
-    uChart.options.scales.x.max = Math.ceil(T);
-    uChart.options.scales.y.max = Math.ceil(55);
-    uChart.options.scales.y.min = Math.floor(-55);
+      uChart.options.scales.x.max = Math.ceil(T);
+    let uBounds = getUBounds();
+    uChart.options.scales.y.max = Math.ceil(uBounds.max);
+    uChart.options.scales.y.min = Math.floor(uBounds.min);
+
     uChart.data.datasets[0].data.push({
         x: t,
-        y: f+amp*t
+        y: f0+amp*t 
     });
 
     uChart.update('none');
 
 
-        xChart.options.scales.x.max = Math.ceil(T);
-    xChart.options.scales.y.max = Math.ceil(f*T + 1/2*amp*T**2);
+    xChart.options.scales.x.max = Math.ceil(T);
+    let xBounds = getXBounds();
+    xChart.options.scales.y.max = Math.ceil(xBounds.max);
+    xChart.options.scales.y.min = Math.floor(xBounds.min);
 
     xChart.data.datasets[0].data.push({
         x: t,
@@ -69,8 +92,6 @@ function Projectile(p) {
 
     xChart.update('none');
 }
-    
-
 
 function formatPi(num) {
   if (num === 0) return "0";
