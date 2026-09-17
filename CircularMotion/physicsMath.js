@@ -304,7 +304,19 @@ drawFloorFade(
     }
 }
     
+function drawAngle(phi0,phi){
+    arc(x0.x,x0.y,50,50,phi0,phi)
+    push();
+    noFill();
+    stroke(243,144,44);
+    strokeWeight(3);
+    arc(x0.x,x0.y,amp*scale*20.3,amp*scale*20.3,phi0,phi)
 
+    pop();
+   
+
+
+}
 
 function formatPi(num) {
   if (num === 0) return "0";

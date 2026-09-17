@@ -52,8 +52,9 @@ arel = toScreen(xt, yt);
   //drawArrow(v0, v1, '#0072B8');
   //drawArrow(v00, v2, '#0072B8');
 }
-function Body_Spring (p){
-   ellipse(width/2+scale*200, p.y, 20);
+function Body_Spring (x,p){
+   ellipse(x, p.y, 20);
+   print(x);
    drawFloorFade(200,-150,55);
   drawingContext.setLineDash([5, 15]);
   if(rotcheck==true){
@@ -101,4 +102,17 @@ for (let tau = 0; tau < cycleTime; tau += 0.01) {
 }
 
   pop();
+}
+function drawAngle(phi0,phi){
+    arc(x0.x,x0.y,50,50,phi0,phi)
+    push();
+    noFill();
+    stroke(243,144,44);
+    strokeWeight(3);
+    arc(x0.x,x0.y,amp*scale*20.3,amp*scale*20.3,phi0,phi)
+
+    pop();
+   
+
+
 }

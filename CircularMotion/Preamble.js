@@ -20,6 +20,7 @@ let xcheck = false;
 let ucheck = false;
 let ucheck1 = false;
 let aCheck = false;
+let pcheck = false;
 let arel;
 let p1;
 let offsetX =0;
@@ -29,8 +30,13 @@ let lastX;
 let lastY;
 let A=1;
 let o;
+let phi0=0;
 document.getElementById("rotCheck").addEventListener("change", function() {
     rotcheck = this.checked;
+   
+});
+document.getElementById("pCheck").addEventListener("change", function() {
+    pcheck = this.checked;
    
 });
 document.getElementById("dCheck").addEventListener("change", function() {

@@ -12,7 +12,7 @@ function setup() {
   let canvas = createCanvas(w, h);
   canvas.parent("sketch-container")
      
-     
+
 chart = new Chart(document.getElementById("myChart"), {
   type: "line",
     data: {
@@ -162,9 +162,10 @@ if (window.visualViewport) {
 }
 function draw() {
   background(144, 190, 109);
-
-   let x = 10*amp*Math.sin(2*Math.PI*f*t+Math.PI/2);
-    let y = 10*amp*Math.cos(2*Math.PI*f*t+Math.PI/2);
+ let phi =2*Math.PI*f*t+Math.PI/2;
+  let phi1 =2*Math.PI*f*t;
+   let x = 10*amp*Math.sin(phi);
+    let y = 10*amp*Math.cos(phi);
     time_Handler();
   p= math_Handler(x,y);
     drawAxes()
@@ -181,8 +182,12 @@ function draw() {
 //if(t>0){
 //drawY(p,'y');}
 //}
+     x0=toScreen(0,0);
 if (rotcheck){
     fDraw(p);}
+if (pcheck){
+    drawAngle(-phi1,phi0);
+    }
 if(ucheck){
 
     if(t>0){

@@ -11,13 +11,14 @@ function setup() {
   }
   let canvas = createCanvas(w, h);
   canvas.parent("sketch-container")
-  
+  x0=toScreen(200,0);
 }
 
 if (window.visualViewport) {
   window.visualViewport.addEventListener('resize', () => {
     windowResized();
   });
+  
 }
 
 function draw() {
@@ -27,7 +28,7 @@ function draw() {
   drawXTicks()
   drawYTicks()
   drawGrid()
-  Body_Spring(p);
+  Body_Spring(x0.x,p);
   
   if(rotcheck==true){
     
